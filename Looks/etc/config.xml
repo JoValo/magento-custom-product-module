@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Jorge Martínez <ing.martinez0302@gmail.com>
+ * @package  Glosbe
+ * @category Glosbe_Looks
+ * @license  http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * 
+**/
+-->
+<config>
+	<modules>
+        <Glosbe_Looks>
+            <version>0.1.4</version>
+        </Glosbe_Looks>
+    </modules>
+    <global>
+        <resources>
+            <looks_setup>
+                <setup>
+                    <module>Glosbe_Looks</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </looks_setup>
+            <looks_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </looks_write>
+            <looks_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </looks_read>
+        </resources>
+        <blocks>
+            <looks>
+                <class>Glosbe_Looks_Block</class>
+            </looks>
+        </blocks>
+        <helpers>
+            <looks>
+                <class>Glosbe_Looks_Helper</class>
+            </looks>
+        </helpers>
+        <models>
+            <looks>
+                <class>Glosbe_Looks_Model</class>
+                <resourceModel>looks_mysql4</resourceModel>
+            </looks>
+            <looksgallery>
+                <class>Glosbe_Looks_Media</class>
+            </looksgallery>
+            <looks_mysql4>
+                <class>Glosbe_Looks_Model_Mysql4</class>
+                <entities>
+                    <looks>
+                        <table>looks</table>
+                    </looks>
+                    <items>
+                        <table>look_items</table>
+                    </items>
+                    <images>
+                        <table>look_images</table>
+                    </images>
+                </entities>
+            </looks_mysql4>
+        </models>
+    </global>   
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                      <Glosbe_Looks before="Mage_Adminhtml">Glosbe_Looks_Adminhtml</Glosbe_Looks>  
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <glosbe_looks>
+                    <file>glosbe_looks.xml</file>
+                </glosbe_looks>
+            </updates>
+        </layout>
+        <menu>
+            <looks translate="title" module="looks">
+                <title>Looks</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <looks translate="title" module="looks">
+                        <title>Manage Looks</title>
+                        <sort_order>100</sort_order>
+                        <action>adminhtml/looks</action>
+                    </looks>
+                </children>                
+            </looks>
+        </menu>
+        <translate>
+            <modules>
+                <Glosbe_Looks>
+                    <files>
+                        <default>Glosbe_Looks.csv</default>
+                    </files>
+                </Glosbe_Looks>
+            </modules>
+        </translate>
+    </adminhtml>
+    <frontend>
+        <routers>
+            <looks>
+                <use>standard</use>
+                <args>
+                    <module>Glosbe_Looks</module>
+                    <frontName>looks</frontName>
+                </args>
+            </looks>
+        </routers>
+        <layout>
+            <updates>
+                <looks>
+                    <file>looks.xml</file>
+                </looks>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Glosbe_Looks>
+                    <files>
+                        <default>Glosbe_Looks.csv</default>
+                    </files>
+                </Glosbe_Looks>
+            </modules>
+        </translate>
+    </frontend>
+</config>
